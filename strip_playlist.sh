@@ -29,8 +29,8 @@ if [ "$?" -eq 0 ]; then
     output=""
     lines_written=FALSE
     escape_string=$(echo $p | sed "s/[!@#$%^&*/()=-]/\\\&/g")
-    output=`awk '/group-title="'$escape_string'"/{nr[NR]; nr[NR+1]}; NR in nr' $RUNAREA/$playlist_input`
-
+    output=`awk '/group-title="'$escape_string'"/{print;exit}' $RUNAREA/$playlist_input`
+    
     if [ -z "$output" ]; then
       IFS=$'\n'
       for group in $tv_groups
@@ -58,7 +58,7 @@ if [ "$?" -eq 0 ]; then
       
     if [[ "$lines_written" == 'FALSE' ]]; then
       IFS=
-      echo $output >> $BASLINE/$playlist_output
+      awk '/group-title="'$escape_string'"/{nr[NR]; nr[NR+1]}; NR in nr' $RUNAREA/$playlist_input >> $BASLINE/$playlist_output
     fi
 
   done < $RUNAREA/$group_file
