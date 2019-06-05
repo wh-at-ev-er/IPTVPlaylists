@@ -42,7 +42,7 @@ if [ "$?" -eq 0 ]; then
           do
             category=$(echo $items | awk -F'"' '{ print $8 }')
             if [[ "$category" == "$group" ]]; then
-              showname=$(echo $items | sed -e 's/.*"'"$group"'",\(.*\) S[0-9][0-9] E[0-9][0-9].*/\1/')
+              showname=$(echo $items | sed -e 's/.*"'"$group"'",\(.*\) S[0-9][0-9] E[0-9][0-9].*/\1/' | sed "s/[!@#$%^&*/()=-]/\\\&/g")
               echo $items | sed -e "s/"$group"/$showname/g" >> $BASLINE/$playlist_output
             else 
               echo $items >> $BASLINE/$playlist_output
