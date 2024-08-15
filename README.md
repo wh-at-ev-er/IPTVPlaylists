@@ -1,5 +1,5 @@
-# IPTVPlaylists
-Scripts for comparing and striping IPTV playlists
+# Playlists
+Scripts for comparing and striping playlists
 
 content_diff.sh
 
@@ -7,4 +7,4 @@ This script will download a playlists and compare it to one that was downloaded 
 
 strip_playlist.sh and groups.txt
 
-This script will download an IPTV playlist, then loop through the file "groups.txt" and create/append all items from that group into a new playlist. It is performs a similar task of Xtreme Editor https://xtream-editor.com/.
+This script will download a playlist, then loop through the file "groups.txt" and create/append all items from that group into a new playlist. It is performs a similar task of Xtreme Editor https://xtream-editor.com/.
